@@ -20,7 +20,7 @@ const projects = [
       "Implemented blog creation, commenting, user profiles.",
       "PostgreSQL as relational DB, Zustand for state, Multer for uploads."
     ],
-    images: ["/blog-1.png", "/blog-2.png", "blog-3.png"]
+    images: ["/blog-1.png", "/blog-2.png", "/blog-3.png"]
   },
   {
     icon: <ShoppingCart size={20} />,
@@ -61,22 +61,23 @@ const projects = [
 export default function ProjectsSection() {
   return (
     <section id="projects" className="py-16 bg-gradient-to-b from-white to-slate-100">
-      <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-12 tracking-tight">
+      <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-12 tracking-tight px-4">
         My Projects
       </h1>
       {/* Main Swiper for Cards */}
       <Swiper
-        spaceBetween={30}
+        spaceBetween={20} // Adjusted space for mobile
         slidesPerView={1}
         pagination={{ clickable: true }}
         navigation={true}
         autoplay={{ delay: 5000 }}
         breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 }
+          640: { slidesPerView: 1, spaceBetween: 20 }, // Mobile layout
+          768: { slidesPerView: 2, spaceBetween: 30 }, // Tablet layout
+          1024: { slidesPerView: 3, spaceBetween: 30 } // Desktop layout
         }}
         modules={[Pagination, Navigation, Autoplay]}
-        className="max-w-6xl mx-auto px-6"
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" // Added responsive padding
       >
         {projects.map((project, i) => (
           <SwiperSlide key={i}>

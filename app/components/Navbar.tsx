@@ -22,6 +22,17 @@ const NAV_ITEMS = [
 ];
 
 export const Navbar = () => {
+  // Function to handle smooth scrolling
+  const handleSmoothScroll = (id: string) => {
+    const element = document.getElementById(id.replace("#", ""));
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-50 shadow-md">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
@@ -34,7 +45,15 @@ export const Navbar = () => {
         {/* Nav Links - Desktop */}
         <div className="hidden md:flex items-center gap-4">
           {NAV_ITEMS.map((item) => (
-            <Button key={item.label} variant="ghost" asChild>
+            <Button
+              key={item.label}
+              variant="ghost"
+              asChild
+              onClick={(e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                handleSmoothScroll(item.href);
+              }}
+            >
               <a href={item.href} className="flex items-center gap-2">
                 {item.icon}
                 <span>{item.label}</span>
@@ -57,6 +76,10 @@ export const Navbar = () => {
                   <a
                     key={item.label}
                     href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault(); // Prevent default anchor behavior
+                      handleSmoothScroll(item.href);
+                    }}
                     className="flex items-center gap-3 text-base hover:text-primary transition"
                   >
                     {item.icon}

@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Navbar } from "~/components/Navbar";
@@ -20,22 +20,39 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  // State to track if all components are loaded
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Effect to simulate loading completion
+  useEffect(() => {
+    // Simulate a delay for loading (optional)
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 3000); // Adjust the delay as needed (e.g., 3 seconds)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       {/* Navbar is not lazy-loaded because it should always be visible */}
       <Navbar />
-      
-      {/* Suspense for loading state */}
-      <Suspense fallback={<LoadingScreen />}>
-        <HeroSection />
-        <main className="pt-5 md:pt-20">
-          <AboutSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <TechStackSection />
-          <ContactSection />
+
+      {/* Show loading screen until all components are loaded */}
+      {!isLoaded ? (
+        <LoadingScreen />
+      ) : (
+        <main className="pt-5">
+          <Suspense fallback={<LoadingScreen />}>
+            <HeroSection />
+            <AboutSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <TechStackSection />
+            <ContactSection />
+          </Suspense>
         </main>
-      </Suspense>
+      )}
     </>
   );
 }
