@@ -23,7 +23,7 @@ const NAV_ITEMS = [
 
 export const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-background dark:bg-gray-900 z-50 shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-50 shadow-md">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">

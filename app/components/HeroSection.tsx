@@ -1,10 +1,6 @@
-"use client";
-
 import { Button } from "../components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Badge } from "./ui/badge";
-import { StaggeredFade } from "./ui/StaggerFade";
 
 const roles = [
   "Frontend Developer",
@@ -13,11 +9,11 @@ const roles = [
   "TypeScript Enthusiast",
 ];
 
-export const HeroSection = () => {
+export default function HeroSection() {
   return (
-    <section id="home" className="relative bg-background dark:bg-gray-900 py-24 overflow-hidden">
+    <section id="home" className="relative bg-gradient-to-b from-white to-slate-100 dark:bg-gray-900 py-24 overflow-hidden md:mt-16">
       {/* Background Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 z-0 pointer-events-none" />
+      <div className="absolute inset-0 z-0 pointer-events-none" />
 
       {/* Content Container */}
       <div className="container relative z-10 mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
@@ -68,7 +64,7 @@ export const HeroSection = () => {
       </div>
     </section>
   );
-};
+}
 
 import Typewriter from "typewriter-effect";
 
