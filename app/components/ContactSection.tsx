@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 
 // Import the PDF file for download
-import CVFile from "~/assets/files/CV Muhammad Bintang Alphar.pdf";
+import CVFile from "~/assets/files/CV Muhammad Bintang Alphari.pdf";
 
 export default function ContactSection() {
   const handleDownloadCV = () => {
